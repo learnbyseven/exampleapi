@@ -6,23 +6,17 @@ class Productlist extends List {
     }
     list(req, res) {
         var db = new Connectdb();
-        db.connectMysql();
-        let products = [
-            {
-                name: 'clothes',
-                id: '101'
-            },
-            {
-                name: 'stationery',
-                id: '102'
-            },
-            {
-                name: 'eatable',
-                id: '103'
-            },
+        var con = db.connectMysql();
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
 
-        ]
-        res.send(products);
+            con.query("select * from product;", function(err, result){
+                res.send(result);
+            });
+          });
+
+        
     }
 } 
 module.exports = Productlist

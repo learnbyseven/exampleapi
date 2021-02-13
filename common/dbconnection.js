@@ -1,18 +1,14 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 class Connectdb {
     connectMysql() {
-        var con = mysql.createConnection({
-            host: "192.168.1.51",
+        const con = mysql.createConnection({
+            host: "192.168.43.52",
             user: "root",
-            password: "root@123"
+            password: "root@123",
+            database: "productdb"
           });
-          
-          con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-          });
-
+          return con;
     }
 }
 module.exports = Connectdb

@@ -1,22 +1,38 @@
-const List = require('../../common/List');
+class userController {
 
-class Userlist extends List {
-    constructor () {
-        super();
-    }
-    list(req, res) {
+    list (req, res) {
         let users = [
             {
-                name: 'ram',
-                id: 1
+            name: 'ram',
+            id: '1',
+            dob: '1982'
             },
             {
-                name: 'shiv',
-                id: 2
+            name: 'shayam',
+            id: '2',
+            dob: '1983'
+            },
+            {
+            name: 'mohan',
+            id: '3',
+            dob: '1984'
+            },
+            ];
+
+            let user = {};
+            for (let i = 0;i<users.length;i++) {
+
+                if (users[i].id == req.params.id) {
+                     user = users[i];
+                }
             }
-        ];
-        res.send(users);
-    }
-    
+
+        res.send(user)
+    };
+
 }
-module.exports = Userlist
+
+    //name (req, res) {
+    //res.send(req.params)        
+    //};
+module.exports = userController 
