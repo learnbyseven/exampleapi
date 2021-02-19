@@ -1,4 +1,4 @@
-const Connectdb = require('../common/dbconnection');
+const Connectdb = require('../common/Connectdb');
 const List = require('../common/List');
 class Productlist extends List {
     constructor () {

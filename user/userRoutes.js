@@ -1,13 +1,11 @@
-//
 const router = require('express').Router();
-const userController = require('./controller/userController');
-const obj = new userController();
+const userController = require('./userController');
+const user = new userController();
+//List Users 
+router.get('/users', user.get);
+// Crteate Users 
+router.post('/users', user.create);
+// Delete User
+router.delete('/users/:name', user.delete);
 
-
-//uri-1
-//router.get('/users/', obj.list);
-//uri-2
-router.get('/users/:id', obj.list);
-
-
-module.exports = router;
+module.exports = router
