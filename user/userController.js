@@ -2,16 +2,18 @@ const { response } = require('express');
 const DB = require('../common/DB');
 
 
-class User extends DB {
+class User extends DB{
     constructor () {
         super('192.168.1.51', 'userdb', 'root', 'root@123');  
     };
-    async get(req, res) {
-        let con = await this.connectDB();
-        getuserquery = 'SELECT * FROM userdata';
-        con.query(getuserquery, function(err, result){
-           res.send(result);
-           });    
+    async get() {
+        return new Promise((resolve, reject) => {
+            let getuserquery = 'SELECT * FROM userdata';
+            this.connection.query(getuserquery, function(err, result){
+                resolve(result);
+            }); 
+        });
+           
     };
     create(req, res) {
         let con = this.connectDB();
